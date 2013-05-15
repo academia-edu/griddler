@@ -20,7 +20,7 @@ you view https://github.com/thoughtbot/griddler/#upgrading-to-griddler-050 for
 upgrade information.
 MESSAGE
 
-  s.add_dependency 'rails', '>= 3.2.0'
+  s.add_dependency 'rails', '3.1.11'
   s.add_dependency 'htmlentities'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sqlite3'
