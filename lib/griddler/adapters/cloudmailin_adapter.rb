@@ -12,7 +12,7 @@ module Griddler
 
       def normalize_params
         {
-          to: params[:envelope][:to].split(','),
+          to: recipients,
           from: params[:envelope][:from],
           subject: params[:headers][:Subject],
           text: params[:plain],
@@ -22,7 +22,15 @@ module Griddler
 
       private
 
-      attr_reader :params
+        attr_reader :params
+
+        def recipients
+          if params[:envelope][:to]
+            params[:envelope][:to].split(',')
+          else
+            []
+          end
+        end
 
     end
   end
