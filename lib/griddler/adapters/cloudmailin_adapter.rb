@@ -27,6 +27,8 @@ module Griddler
         def recipients
           if params[:envelope][:to]
             params[:envelope][:to].split(',')
+          elsif params[:envelope][:recipients]
+            params[:envelope][:recipients].values
           else
             []
           end
