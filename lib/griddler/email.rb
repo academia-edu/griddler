@@ -81,6 +81,8 @@ module Griddler
     end
 
     def clean_invalid_utf8_bytes(text, email_part)
+      return '' unless text.present?
+
       text.encode(
         'UTF-8',
         src_encoding(email_part),
