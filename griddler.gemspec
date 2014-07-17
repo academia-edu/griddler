@@ -26,4 +26,5 @@ MESSAGE
   s.add_development_dependency 'sqlite3'
   # jquery-rails is used by the dummy Rails application
   s.add_development_dependency 'jquery-rails'
+  s.add_development_dependency 'gemfury'
 end
