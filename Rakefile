@@ -20,12 +20,7 @@ task :release_internal do |t|
     def release_gem
       guard_clean
       built_gem_path = build_gem
-      if Bundler::VERSION =~ /1\.3\.\d/
-        tag_version { git_push } unless already_tagged?
-      else
-        guard_already_tagged
-        tag_version { git_push }
-      end
+      tag_version { git_push } unless already_tagged?
       `fury push #{built_gem_path}`
       Bundler.ui.confirm "Pushed #{name} #{version} to gemfury"
     end
