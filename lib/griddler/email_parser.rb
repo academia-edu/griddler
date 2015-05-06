@@ -39,6 +39,8 @@ module Griddler::EmailParser
         gsub(/^\s*On.*\r?\n?\s*.*\s*wrote:$/,'').
         strip
     end
+  rescue NoMethodError
+    raise $!, "body: #{body.inspect}\ndelimeter: #{delimeter.inspect}\n#{$!}", $!.backtrace
   end
 
   def self.extract_headers(raw_headers)
