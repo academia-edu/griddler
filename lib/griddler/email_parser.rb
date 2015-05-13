@@ -40,7 +40,8 @@ module Griddler::EmailParser
         strip
     end
   rescue NoMethodError
-    raise $!, "body: #{body.inspect}\ndelimeter: #{delimeter.inspect}\n#{$!}", $!.backtrace
+    Rails.logger.error("body: #{body.inspect}\ndelimeter: #{delimeter.inspect}\n#{$!}")
+    raise $!, "body: #{body.inspect[0, 100]}\ndelimeter: #{delimeter.inspect}\n#{$!}", $!.backtrace
   end
 
   def self.extract_headers(raw_headers)
