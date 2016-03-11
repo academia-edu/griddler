@@ -39,9 +39,9 @@ module Griddler::EmailParser
         gsub(/^\s*On.*\r?\n?\s*.*\s*wrote:$/,'').
         strip
     end
-  rescue NoMethodError
-    Rails.logger.error("body: #{body.inspect}\ndelimeter: #{delimeter.inspect}\n#{$!}")
-    raise $!, "body: #{body.inspect[0, 100]}\ndelimeter: #{delimeter.inspect}\n#{$!}", $!.backtrace
+  rescue NoMethodError => error
+    Rails.logger.error("body: #{body.inspect}\ndelimiter: #{delimeter.inspect}\n#{error.message}")
+    ""
   end
 
   def self.extract_headers(raw_headers)
