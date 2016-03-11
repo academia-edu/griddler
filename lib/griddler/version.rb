@@ -1,3 +1,3 @@
 module Griddler
-  VERSION = "0.5.4.academia"
+  VERSION = "0.5.5.academia"
 end
