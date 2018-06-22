@@ -38,11 +38,13 @@ module Griddler
     end
 
     def recipients
-      params[:to].map { |recipient| extract_address(recipient, config.to) }
+      params[:to].map { |recipient| extract_address(recipient, config.to) }.compact
     end
 
     def extract_address(address, type)
-      parsed = EmailParser.parse_address(address)
+      clean_address = clean_text(address)
+      return unless clean_address =~ /@/
+      parsed = EmailParser.parse_address(clean_address)
 
       if type == :hash
         parsed
